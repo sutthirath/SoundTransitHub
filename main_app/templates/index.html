@@ -1,12 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sound Transit Hub</title>
-</head>
-<body>
-    <h1>Welcome and join your pod!</h1>
+{% extends 'base.html' %}
+<!-- This is the landing page -->
+
+{% block content %}
+
+<body class="teal lighten-2">
+    <header>
+        <nav class="teal">
+            <ul class="left">
+                <li><img src="#" alt="logo"></li>
+            </ul>
+            <ul class="right">
+                <li><a href="/">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">EXPLORE</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+        
+    <h1 class="center-align">Welcome to Sound Transit Hub!</h1>
+
+    <div class="row">
+        <div class="card-panel black center">
+            <h2 class="white-text">Create Your Pod!</h2>
+            <button>Sign Up!</button>
+        </div>
+    </div>
+
 </body>
-</html>
+{% endblock %}
