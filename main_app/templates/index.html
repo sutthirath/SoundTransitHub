@@ -12,6 +12,10 @@
     .row {
         width: 450px;
     }
+    #contact {
+        width: 800px;
+        margin: auto;
+    }
 </style>
 
 <!-- page content -->
@@ -26,6 +30,7 @@
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">EXPLORE</a></li>
                 <li><a href="#">CONTACT</a></li>
+                <!-- Login dropdown trigger -->
                 <li><a href="#" data-target="login" class="dropdown-trigger">LOGIN</a></li>
             </ul>
         </nav>
@@ -49,13 +54,36 @@
     </header>
         
     <h1 class="center-align">Welcome to Sound Transit Hub!</h1>
-
+<!-- Sign up form modal-trigger -->
     <div class="row">
         <div class="card-panel teal accent-3 center">
             <h2 class="white-text">Create Your Pod!</h2>
-            <button class="btn">Sign Up!</button>
+            <button class="btn modal-trigger" href="#signup">Sign Up!</button>
         </div>
     </div>
+
+<!-- Sign up form modal -->
+<div class="modal" id="signup">
+    <div class="modal-content">
+        <h4 class="center">Create Your Pod</h4>
+        <div class="input-field">
+            <input id="name" type="text">
+            <label for="name">Full Name</label>
+        </div>
+        <div class="input-field">
+            <input id="email" type="email">
+            <label for="email">Email</label>
+        </div>
+        <div class="input-field">
+            <input id="password" type="password">
+            <label for="password">Password</label>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+        </div>
+    </div>
+</div>
+    
 
 <!-- About section -->
     <div>
@@ -89,6 +117,31 @@
             - Store preferences of each family member
             - Add a simple note/reminder or message board
     </p>
+</div>
+
+<!-- Contact section -->
+<div>
+    <h2>Contact</h2>
+    <div id="contact" class="card center">
+        <form>
+            <div class="row">
+                <div class="input-field">
+                    <input id="firstname" type="text">
+                    <label for="firstname">First Name</label>
+                </div>
+                <div class="input-field">
+                    <input id="lastname" type="text">
+                    <label for="lastname">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="email2" type="email">
+                    <label for="email2">Email</label>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 </body>
