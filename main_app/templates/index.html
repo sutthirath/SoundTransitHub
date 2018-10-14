@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
+
 <!-- This is the landing page -->
 
 {% block content %}
 
-<body class="teal lighten-2">
+<!-- CSS styling -->
+<style>
+    h1 {
+        color: white;
+    }
+    .row {
+        width: 450px;
+    }
+</style>
+
+<!-- page content -->
+<body class="teal accent-3">
     <header>
-        <nav class="teal">
+        <nav class="teal accent-3">
             <ul class="left">
                 <li><img src="#" alt="logo"></li>
             </ul>
@@ -14,19 +26,71 @@
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">EXPLORE</a></li>
                 <li><a href="#">CONTACT</a></li>
-                <li><a href="#">LOGIN</a></li>
+                <li><a href="#" data-target="login" class="dropdown-trigger">LOGIN</a></li>
             </ul>
         </nav>
+
+<!-- materialize dropdown and login form -->
+        <div id="login" class="dropdown-content">
+            <form class="col container">
+                <div class="row">
+                    <div class="input-field">
+                        <input id="email" type="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="password" type="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <button class="btn" style="width: 380px" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
     </header>
         
     <h1 class="center-align">Welcome to Sound Transit Hub!</h1>
 
     <div class="row">
-        <div class="card-panel black center">
+        <div class="card-panel teal accent-3 center">
             <h2 class="white-text">Create Your Pod!</h2>
-            <button>Sign Up!</button>
+            <button class="btn">Sign Up!</button>
         </div>
     </div>
 
+<!-- About section -->
+    <div>
+        <h2>About Sound Transit Hub</h2>
+        <p>
+            Why:
+            There has been a growing trend in smart home devices known as “hubs,” such as the Amazon Show, Lenovo Smart Display, and recently the Google Home Hub. These hubs sit on your countertop and is “always on.” The devices display basic information such as time, date, and the weather with the added bonus of a smart assistant.
+            The Problem:
+            These hub devices have limited capabilities compared to a tablet or smartphone. Also, these devices are not affordable to everyone.
+            The Solution:
+            SoundTransitHub. A web browser application that displays real-time information for your local transit. This application has a “hub-like” interface and displays your personal local data. 
+            According to www.statista.com, over 1.2 billion already own a tablet. Simply go to SoundTransitHub.com and login to your personal account. The main screen will display your requested information with real-time updates.        
+        </p>
+    </div>
+
+<!-- Explore section -->
+<div>
+    <h2>Explore</h2>
+    <p>
+        What it do:
+            - Link to ORCA website to add/view money
+            - Display time, date, weather
+            - Google map like functionality
+                - Or just a link to maps
+            - Sound transit API to get real time information
+                - Show transit arrives and stops
+                - Show transit transfers
+            - Real-time traffic updates
+            - Live alerts for delays
+            - One account can be used by the entire family
+            - Store preferences of each family member
+            - Add a simple note/reminder or message board
+    </p>
+</div>
+
 </body>
+
 {% endblock %}
