@@ -9,8 +9,12 @@
     h1 {
         color: white;
     }
-    .row {
+    #signupcard {
         width: 450px;
+    }
+    .dropdown-content {
+        top: -65px;
+        width: 300px;
     }
     #contact {
         width: 800px;
@@ -23,7 +27,7 @@
     <header>
         <nav class="teal accent-3">
             <ul class="left">
-                <li><img src="#" alt="logo"></li>
+                <li><img src="#" alt="SoundTransitHub"></li>
             </ul>
             <ul class="right">
                 <li><a href="/">HOME</a></li>
@@ -37,25 +41,17 @@
 
 <!-- materialize dropdown and login form -->
         <div id="login" class="dropdown-content">
-            <form class="col container">
-                <div class="row">
-                    <div class="input-field">
-                        <input id="email" type="email">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="password" type="password">
-                        <label for="password">Password</label>
-                    </div>
-                    <button class="btn" style="width: 380px" type="submit">Login</button>
-                </div>
+            <form method="POST" class="col container">
+                {% csrf_token %}
+                {{ login_form}}
+                <input type="submit" value="sign_in">
             </form>
         </div>
     </header>
         
     <h1 class="center-align">Welcome to Sound Transit Hub!</h1>
 <!-- Sign up form modal-trigger -->
-    <div class="row">
+    <div class="row" id="signupcard">
         <div class="card-panel teal accent-3 center">
             <h2 class="white-text">Create Your Pod!</h2>
             <button class="btn modal-trigger" href="#signup">Sign Up!</button>
@@ -66,24 +62,13 @@
 <div class="modal" id="signup">
     <div class="modal-content">
         <h4 class="center">Create Your Pod</h4>
-        <div class="input-field">
-            <input id="name" type="text">
-            <label for="name">Full Name</label>
-        </div>
-        <div class="input-field">
-            <input id="email" type="email">
-            <label for="email">Email</label>
-        </div>
-        <div class="input-field">
-            <input id="password" type="password">
-            <label for="password">Password</label>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
-        </div>
+        <form action="/account/" class="site-form" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="sign_up">
+        </form>
     </div>
 </div>
-    
 
 <!-- About section -->
     <div>
