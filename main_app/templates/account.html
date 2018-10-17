@@ -15,12 +15,16 @@
                 </ul>
             </nav>
     </header>
-
-    <h1>Account Page</h1>
     
-    <div>
-        <h2>Ahoy, {{ request.user }}!</h2>
-        <p>This is where your account information will be located.</p>
+    <div class="container center">
+        <h2>Ahoy, {{ request.user }}, access your account here!</h2>
+    </div>
+
+    <div class="card-panel teal accent-3">
+        <h3>Information:</h3>
+        <p>First Name: {{ request.user.first_name }}</p>
+        <p>First Name: {{ request.user.last_name }}</p>
+        <p>Email: {{ request.user.email }}</p>
     </div>
     
 </body>

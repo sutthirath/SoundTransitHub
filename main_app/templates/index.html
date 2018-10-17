@@ -41,10 +41,10 @@
 
 <!-- materialize dropdown and login form -->
         <div id="login" class="dropdown-content">
-            <form method="POST" class="col container">
+            <form action="{% url 'account' %}" method="POST" class="login col container">
                 {% csrf_token %}
-                {{ login_form}}
-                <input type="submit" value="sign_in">
+                {{ forms.login_view }}
+                <button name="action" type="submit" value="sign_in">Login</button>
             </form>
         </div>
     </header>
@@ -62,10 +62,10 @@
 <div class="modal" id="signup">
     <div class="modal-content">
         <h4 class="center">Create Your Pod</h4>
-        <form action="/account/" class="site-form" method="POST">
+        <form action="{% url 'account' %}" class="signup site-form" method="POST">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="sign_up">
+            {{ forms.signup_view }}
+            <button name="action" type="submit" value="signup">Submit</button>
         </form>
     </div>
 </div>
