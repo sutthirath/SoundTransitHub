@@ -2,48 +2,71 @@
 
 {% block content %}
 
-<h2>Transit Arrival Time:</h2>
+<h2 class='center'>Transit Arrival Time:</h2>
 
-<div>
+<div class="center">
     <p id='eta'>0</p>
     <p>min</p>
 </div>
 
-{% endblock %}
+
 
 <!-- Javascript for OneBusAway API -->
 <Script>
 
 // Variables
-let requestURL = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75790.json?key=683488fe-ec3e-499e-ae74-6774058697bc';
-let request = new XMLHttpRequest();
-let estArrival = jsonObj["predictedArrivalTime"];
+// let requestURL = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75790.json?key=683488fe-ec3e-499e-ae74-6774058697bc';
+// let request = new XMLHttpRequest();
+// let estArrival = JSON["scheduledArrivalTime"];
 
-// Get JSON data
-request.open('GET', requestURL);
+// // Get JSON data
+// request.open('GET', requestURL, 'jsonp');
 
-request.responseType = 'json';
+// request.responseType = 'json';
 
-request.send();
+// request.send();
 
-request.onload = function() {
-    let arrivalTime = request.response;
-    etaData();
+// request.onload = function() {
+//     let arrivalTime = request.response;
+//     etaData();
+//     console.log(etaData());
+// }
+
+// // Convert JSON timestamp to readable time
+// var d = new Date(1245398693390);
+// var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
+// var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+// var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+// var formattedTime = hours + ":" + minutes;
+
+// formattedDate = formattedDate + " " + formattedTime;
+
+// // Functions
+// function etaData() {
+//     let eta = document.getElementById(eta);
+//     eta.textContent = formattedDate;
+// }
+
+let display = document.getElementById(eta);
+eta.addEventListener('click', test);
+
+function test() {
+    console.log('here!!')
+    fetch('https://cors-anywhere.herokuapp.com/' + 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75790.json?key=683488fe-ec3e-499e-ae74-6774058697bc')
+    .then(function(res) {
+        return res.json()
+    })
+    .then(function(res) {
+        console.log('res', res)
+        return res
+    })
+    .catch(function(err) {
+        console.log('err', err)
+    })
 }
 
-// Functions
-function etaData() {
-    let eta = document.getElementById(eta);
-    eta.textContent = formattedDate;
-}
-
-// Convert JSON timestamp to readable time
-var d = new Date(1245398693390);
-var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
-var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-var formattedTime = hours + ":" + minutes;
-
-formattedDate = formattedDate + " " + formattedTime;
 
 </Script>
+
+{% endblock %}
+
