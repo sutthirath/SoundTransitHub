@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends 'base.html' %}
+
+{% block content %}
+
     <title>Account Information</title>
 </head>
 <body>
-    <h1>This is your account information page!</h1>
+    <header>
+        <nav class="teal accent-3">
+                <ul class="left">
+                    <li><img src="#" alt="SoundTransitHub"></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="/">LOGOUT</a></li>
+                </ul>
+            </nav>
+    </header>
+
+    <h1>Account Page</h1>
+    
+    <div>
+        <h2>Ahoy, {{ request.user }}!</h2>
+        <p>This is where your account information will be located.</p>
+    </div>
+    
 </body>
-</html>
+
+{% endblock %}
