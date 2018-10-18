@@ -11,7 +11,12 @@
                     <li><img src="#" alt="SoundTransitHub"></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="/">LOGOUT</a></li>
+                    <li>
+                        <form class="logout-link" action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
     </header>
@@ -23,7 +28,7 @@
     <div class="card-panel teal accent-3">
         <h3>Information:</h3>
         <p>First Name: {{ request.user.first_name }}</p>
-        <p>First Name: {{ request.user.last_name }}</p>
+        <p>Last Name: {{ request.user.last_name }}</p>
         <p>Email: {{ request.user.email }}</p>
     </div>
     

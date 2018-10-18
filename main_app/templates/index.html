@@ -41,10 +41,10 @@
 
 <!-- materialize dropdown and login form -->
         <div id="login" class="dropdown-content">
-            <form action="{% url 'account' %}" method="POST" class="login col container">
+            <form action="{% url 'index' %}" method="POST" class="site-form col container">
                 {% csrf_token %}
-                {{ forms.login_view }}
-                <button name="action" type="submit" value="sign_in">Login</button>
+                {{ login_form }}
+                <input type="submit" value="Login" class="btn">
             </form>
         </div>
     </header>
@@ -57,18 +57,6 @@
             <button class="btn modal-trigger" href="#signup">Sign Up!</button>
         </div>
     </div>
-
-<!-- Sign up form modal -->
-<div class="modal" id="signup">
-    <div class="modal-content">
-        <h4 class="center">Create Your Pod</h4>
-        <form action="{% url 'account' %}" class="signup site-form" method="POST">
-            {% csrf_token %}
-            {{ forms.signup_view }}
-            <button name="action" type="submit" value="signup">Submit</button>
-        </form>
-    </div>
-</div>
 
 <!-- About section -->
     <div>
@@ -107,26 +95,6 @@
 <!-- Contact section -->
 <div>
     <h2>Contact</h2>
-    <div id="contact" class="card center">
-        <form>
-            <div class="row">
-                <div class="input-field">
-                    <input id="firstname" type="text">
-                    <label for="firstname">First Name</label>
-                </div>
-                <div class="input-field">
-                    <input id="lastname" type="text">
-                    <label for="lastname">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field">
-                    <input id="email2" type="email">
-                    <label for="email2">Email</label>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
 
 </body>
