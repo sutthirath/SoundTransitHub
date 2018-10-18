@@ -12,10 +12,7 @@
                 </ul>
                 <ul class="right">
                     <li>
-                        <form class="logout-link" action="{% url 'logout' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn">Logout</button>
-                        </form>
+                        <a href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -25,13 +22,26 @@
         <h2>Ahoy, {{ request.user }}, access your account here!</h2>
     </div>
 
-    <div class="card-panel teal accent-3">
-        <h3>Information:</h3>
+    <div id="information" class="card-panel teal accent-3">
+        <h4>Information</h4>
         <p>First Name: {{ request.user.first_name }}</p>
         <p>Last Name: {{ request.user.last_name }}</p>
         <p>Email: {{ request.user.email }}</p>
     </div>
     
+    <div id="location" class="card-panel teal accent-3">
+        <h4>Location</h4>
+        <p>Address: </p>
+        <p>City: </p>
+        <p>State: </p>
+        <p>ZIP Code: </p>
+    </div>
+
+    <div id="profile" class="card-panel teal accent-3">
+        <h4>Add a Member</h4>
+    
+    </div>
+
 </body>
 
 {% endblock %}

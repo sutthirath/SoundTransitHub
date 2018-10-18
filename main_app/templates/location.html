@@ -13,11 +13,11 @@
 
     <div class="" style="width:600px; margin: auto">
         <div class="card">
-            <h4 class="center">1.  Create Your Pod</h4>
-            <form action="{% url 'signup' %}" class="site-form" method="POST">
+            <h4 class="center">2.  Enter Home Address</h4>
+            <form action="{% url 'location' %}" class="site-form" method="POST">
                 {% csrf_token %}
                 {{ form }}
-                <input type="submit" value="Next" class="btn">
+                <input type="submit" value="Submit" class="btn">
             </form>
         </div>
     </div>

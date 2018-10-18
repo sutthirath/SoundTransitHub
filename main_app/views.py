@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django import forms
+from .forms import Address
 from .models import Account
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -37,15 +38,24 @@ def signup(request):
         if (form.is_valid()):
             user = form.save()
             login(request, user)
-            return redirect('account')
+            return redirect('location')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form':form})
 
-
 def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def location(request):
     if (request.method == 'POST'):
-        logout(request)
+        form = Address(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/account/')
+    else:
+        form = Address()
+    return render(request, 'location.html', {'form': form})
 
 def account(request):
     return render(request, 'account.html')
