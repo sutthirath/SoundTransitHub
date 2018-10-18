@@ -24,17 +24,16 @@
 
     <div id="information" class="card-panel teal accent-3">
         <h4>Information</h4>
-        <p>First Name: {{ request.user.first_name }}</p>
-        <p>Last Name: {{ request.user.last_name }}</p>
-        <p>Email: {{ request.user.email }}</p>
+        <p>Username: {{ accounts.user }}</p>
+        <p>Email: {{ accounts.email }}</p>
     </div>
     
     <div id="location" class="card-panel teal accent-3">
-        <h4>Location</h4>
-        <p>Address: </p>
-        <p>City: </p>
-        <p>State: </p>
-        <p>ZIP Code: </p>
+        <h4>Location </h4>
+        <p>Address: {{ accounts.address }}</p>
+        <p>City: {{ accounts.city }}</p>
+        <p>State: {{ accounts.state }}</p>
+        <p>ZIP Code: {{ accounts.zipcode }}</p>
     </div>
 
     <div id="profile" class="card-panel teal accent-3">

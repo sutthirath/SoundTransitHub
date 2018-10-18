@@ -14,7 +14,7 @@
     <div class="" style="width:600px; margin: auto">
         <div class="card">
             <h4 class="center">2.  Enter Home Address</h4>
-            <form action="{% url 'location' %}" class="site-form" method="POST">
+            <form action="{% url 'details' %}" class="site-form" method="POST">
                 {% csrf_token %}
                 {{ form }}
                 <input type="submit" value="Submit" class="btn">
