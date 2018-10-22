@@ -1,0 +1,15 @@
+
+{% block content %}
+
+<div class="card">
+    <div class="col s6">
+    <h4 class="center">Write a review</h4>
+    <form action="{% url 'reviews' tran.id %}" class="site-form" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" class="btn">
+    </form>
+    </div>
+</div>
+
+{% endblock %}

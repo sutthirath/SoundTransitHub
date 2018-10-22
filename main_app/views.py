@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django import forms
-from .forms import Details
-from .models import Account, Transit
+from .forms import Details, CommentForm
+from .models import Account, Transit, Comment
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Function based views
 
@@ -73,8 +74,19 @@ def main(request):
 
 @login_required
 def reviews(request, transit_id):
-    trans = Transit.objects.get(id=transit_id)
-    return render(request, 'transit/reviews.html', {'trans': trans})
+    tran = Transit.objects.get(id=transit_id)
+    com = Comment.objects.filter(transit=transit_id)
+    if (request.method == 'POST'):
+        form = CommentForm.objects.get()
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return HttpResponseRedirect('/reviews/')
+    else:
+        form = CommentForm()
+    return render(request, 'transit/reviews.html', {'tran': tran, 'form':form, 'com':com})
+
 
 # Class based views
 class TransitCreate(CreateView):
@@ -85,6 +97,7 @@ class TransitUpdate(UpdateView):
   model = Transit
   fields = '__all__'
 
+@method_decorator(login_required, name='dispatch')
 class TransitDelete(DeleteView):
   model = Transit
   success_url = '/transit/main'

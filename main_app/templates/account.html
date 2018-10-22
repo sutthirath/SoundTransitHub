@@ -19,7 +19,7 @@
     </header>
     
     <div class="container center">
-        <h2>Ahoy, {{ user.username }}, access your account here!</h2>
+        <h2>Ahoy, {{ user.username }}!</h2>
     </div>
 
     <div id="information" class="card-panel teal accent-3">
@@ -36,10 +36,11 @@
         <p>ZIP Code: {{ info.zipcode }}</p>
     </div>
 
-    <div id="profile" class="card-panel teal accent-3">
-        <h4>Add a Member</h4>
-    
-    </div>
+    <a href="{% url 'main' %}">
+        <div id="profile" class="card-panel teal accent-3 center">
+            <h4>See the Reviews!</h4>
+        </div>
+    </a>    
 
 </body>
 

@@ -10,7 +10,7 @@
 <!-- html -->
 <header>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper teal">
             <ul class="brand-logo left">
                 <li>
                     <img src="#" alt="SoundTransitHub">
@@ -34,7 +34,7 @@
     </div>
     <!-- list of transit -->
     {% for tran in trans %}
-    <a href="{% url 'reviews' transit.id %}">
+    <a href="{% url 'reviews' tran.id %}">
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ tran.route }}</span>
