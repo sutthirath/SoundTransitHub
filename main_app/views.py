@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .forms import Details
-from .models import Account
+from .models import Account, Transit
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Function based views
 
@@ -43,34 +44,47 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form':form})
 
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/')
-
 def details_view(request):
     if (request.method == 'POST'):
         form = Details(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
             return HttpResponseRedirect('/account/')
     else:
         form = Details()
     return render(request, 'details.html', {'form': form})
 
+@login_required()
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+@login_required    
 def account(request):
-    return render(request, 'account.html')
+    info = Account.objects.get(user=request.user.id)
+    return render(request, 'account.html', {'info': info})
 
-class PodCreate(CreateView):
-    model = Account
-    fields = '__all__'
-
-class PodUpdate(UpdateView):
-    model = Account
-    fields = '__all__'
-
-class PodDelete(DeleteView):
-    model = Account
-    success_url = '/account'
-
+@login_required
 def main(request):
-    return render(request, 'main.html')
+    trans = Transit.objects.all()
+    return render(request, 'transit/main.html', {'trans': trans})
+
+@login_required
+def reviews(request, transit_id):
+    trans = Transit.objects.get(id=transit_id)
+    return render(request, 'transit/reviews.html', {'trans': trans})
+
+# Class based views
+class TransitCreate(CreateView):
+  model = Transit
+  fields = '__all__'
+
+class TransitUpdate(UpdateView):
+  model = Transit
+  fields = '__all__'
+
+class TransitDelete(DeleteView):
+  model = Transit
+  success_url = '/transit/main'

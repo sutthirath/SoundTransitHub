@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- css -->
+<style>
+
+</style>
+
+<!-- html -->
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <ul class="brand-logo left">
+                <li>
+                    <img src="#" alt="SoundTransitHub">
+                </li>
+            </ul>
+            <ul class="right">
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <!-- search bar -->
+    <div class="contatiner">
+        <h3>Search local reviews:</h3>
+        <span>
+            <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        </span>
+    </div>
+    <!-- list of transit -->
+    {% for tran in trans %}
+    <a href="{% url 'reviews' transit.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ tran.route }}</span>
+                <p>Branch: {{ tran.branch }}</p>
+                <p>Vehicle: {{ tran.transit_type }}</p>
+                <p>Hours of Operation: {{ tran.time }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</body>
+
+{% endblock %}
+

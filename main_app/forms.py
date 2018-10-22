@@ -1,7 +1,7 @@
 from django import forms
 from .models import Account
 
-class Details(forms.Form):
+class Details(forms.ModelForm):
     email = forms.EmailField()
     address = forms.CharField(max_length=50)
     city = forms.CharField(max_length=20)
@@ -10,5 +10,6 @@ class Details(forms.Form):
 
     class Meta:
         model = Account
+        fields = ('email', 'address', 'city', 'state', 'zipcode')
 
 

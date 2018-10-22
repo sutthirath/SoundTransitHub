@@ -19,21 +19,21 @@
     </header>
     
     <div class="container center">
-        <h2>Ahoy, {{ request.user }}, access your account here!</h2>
+        <h2>Ahoy, {{ user.username }}, access your account here!</h2>
     </div>
 
     <div id="information" class="card-panel teal accent-3">
         <h4>Information</h4>
-        <p>Username: {{ accounts.user }}</p>
-        <p>Email: {{ accounts.email }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ info.email }}</p>
     </div>
-    
+
     <div id="location" class="card-panel teal accent-3">
         <h4>Location </h4>
-        <p>Address: {{ accounts.address }}</p>
-        <p>City: {{ accounts.city }}</p>
-        <p>State: {{ accounts.state }}</p>
-        <p>ZIP Code: {{ accounts.zipcode }}</p>
+        <p>Address: {{ info.address }}</p>
+        <p>City: {{ info.city }}</p>
+        <p>State: {{ info.state }}</p>
+        <p>ZIP Code: {{ info.zipcode }}</p>
     </div>
 
     <div id="profile" class="card-panel teal accent-3">
